@@ -1,0 +1,8 @@
+{
+  "repositoryName": "prismic-tailwind-template",
+  "adapter": "@slicemachine/adapter-next",
+  "libraries": [
+    "./src/slices"
+  ],
+  "localSliceSimulatorURL": "http://localhost:3001/slice-simulator"
+}
