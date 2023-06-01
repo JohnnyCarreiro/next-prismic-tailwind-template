@@ -10,6 +10,7 @@ module.exports = {
       fontFamily: {
         sans: 'var(--font-roboto)',
         brand: 'var(--font-ubuntu)',
+        code: 'var(--font-fira-code)',
       },
       colors: require('./src/styles/tokens/colors'),
     },
