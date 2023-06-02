@@ -1,21 +1,23 @@
-import { Button } from '@/components/@core/Button'
-import Image from 'next/image'
+import { Heading } from '@core-ui/Heading'
+import { Text } from '@core-ui/Text'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between px-24 py-24">
-      <h1 className={'font-brand text-4xl'}>Hello World</h1>
-      <Button
-        className={
-          'rounded-full bg-brand_primary px-4 text-primary-950 hover:bg-primary-200'
-        }
-        isLoading={false}
-        variant={'secondary'}
-        disabled={false}
-        size={'sm'}
-      >
-        Botão
-      </Button>
+    <main className="flex h-full min-h-screen flex-col items-center justify-between px-24 py-24">
+      <div className="mb-4 flex w-full max-w-6xl flex-col gap-2 p-4">
+        <Heading as="h1" size="xlg" className={'text-center uppercase'}>
+          Home Page
+        </Heading>
+        <Text>
+          Get all components{' '}
+          <a
+            href="/components"
+            className="underline underline-offset-2 transition-all delay-300 hover:text-brand-primary"
+          >
+            here
+          </a>
+        </Text>
+      </div>
     </main>
   )
 }

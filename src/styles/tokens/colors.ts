@@ -97,9 +97,9 @@ exports.default = {
     950: '#08261e',
   },
 
-  brand_primary: '#60c6c5',
-  brand_analogous: '#7360c6',
-  brand_secondary: '#605b55',
+  'brand-primary': '#60c6c5',
+  'brand-analogous': '#7360c6',
+  'brand-secondary': '#605b55',
 
   // info: '#60b3c6',
   // danger: '#c66061',

@@ -2,6 +2,7 @@ import './globals.css'
 import {
   Roboto_Flex as Roboto,
   Ubuntu_Condensed as Ubuntu,
+  Fira_Mono as FiraCode,
 } from 'next/font/google'
 
 const roboto = Roboto({ subsets: ['latin'], variable: '--font-roboto' })
@@ -9,6 +10,11 @@ const ubuntu = Ubuntu({
   subsets: ['latin'],
   weight: '400',
   variable: '--font-ubuntu',
+})
+const fira = FiraCode({
+  subsets: ['latin'],
+  weight: '500',
+  variable: '--font-fira-code',
 })
 
 export const metadata = {
@@ -23,7 +29,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} ${ubuntu.variable} font-sans`}>
+      <body
+        className={`${roboto.variable} ${ubuntu.variable} ${fira.variable} font-sans`}
+      >
         {children}
       </body>
     </html>
