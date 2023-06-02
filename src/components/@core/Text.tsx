@@ -4,9 +4,9 @@ import { VariantProps, cva } from 'class-variance-authority'
 const textVariantProps = cva('text-inherit leading-relaxed', {
   variants: {
     size: {
-      sm: 'text-sm',
-      md: 'text-base',
-      lg: 'text-lg',
+      sm: 'text-sm max-sm:text-base',
+      md: 'text-base max-sm:text-lg',
+      lg: 'text-lg max-sm:text-xlg',
     },
   },
   defaultVariants: {
@@ -49,7 +49,7 @@ export const Text = <C extends React.ElementType = AllowedTags>({
   size,
   ...other
 }: TextProps<C>) => {
-  const Component = as || 'span'
+  const Component = as || 'p'
 
   return (
     <Component className={cn(textVariantProps({ className, size }))} {...other}>
