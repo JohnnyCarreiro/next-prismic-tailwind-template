@@ -29,6 +29,9 @@
       ],
       "@core-ui/*": [
         "./src/components/@core/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
       ]
     }
   },

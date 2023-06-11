@@ -6,6 +6,227 @@ import type * as prismicClient from "@prismicio/client";
 type Simplify<T> = {
   [KeyType in keyof T]: T[KeyType];
 };
+/** Content for Início documents */
+interface HomeDocumentData {
+  /**
+   * Slice Zone field in *Início*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+   *
+   */
+  slices: prismic.SliceZone<HomeDocumentDataSlicesSlice>;
+  /**
+   * Meta Description field in *Início*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: home.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  meta_description: prismic.RichTextField;
+  /**
+   * Meta Image field in *Início*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  meta_image: prismic.ImageField<never>;
+  /**
+   * Meta Title field in *Início*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: home.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  meta_title: prismic.KeyTextField;
+}
+/**
+ * Slice for *Início → Slice Zone*
+ *
+ */
+type HomeDocumentDataSlicesSlice = HeroSlice;
+/**
+ * Início document from Prismic
+ *
+ * - **API ID**: `home`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HomeDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
+/** Content for Navegação documents */
+interface NavegacaoDocumentData {
+  /**
+   * Nome field in *Navegação*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Nome da lista de menus
+   * - **API ID Path**: navegacao.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  name: prismic.KeyTextField;
+  /**
+   * Slice Zone field in *Navegação*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navegacao.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+   *
+   */
+  slices: prismic.SliceZone<NavegacaoDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *Navegação → Slice Zone*
+ *
+ */
+type NavegacaoDocumentDataSlicesSlice = MenuOpcoesSlice;
+/**
+ * Navegação document from Prismic
+ *
+ * - **API ID**: `navegacao`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavegacaoDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<NavegacaoDocumentData>,
+    "navegacao",
+    Lang
+  >;
+/** Content for Página documents */
+interface PageDocumentData {
+  /**
+   * Título da página field in *Página*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.pageTitle
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  pageTitle: prismic.KeyTextField;
+  /**
+   * belongs to field in *Página*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.belongsTo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  belongsTo: prismic.RelationField<"page" | "home">;
+  /**
+   * group field in *Página*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.group[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/group
+   *
+   */
+  group: prismic.GroupField<Simplify<PageDocumentDataGroupItem>>;
+  /**
+   * Slice Zone field in *Página*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+   *
+   */
+  slices: prismic.SliceZone<PageDocumentDataSlicesSlice>;
+  /**
+   * Meta Description field in *Página*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  meta_description: prismic.RichTextField;
+  /**
+   * Meta Image field in *Página*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  meta_image: prismic.ImageField<never>;
+  /**
+   * Meta Title field in *Página*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  meta_title: prismic.KeyTextField;
+}
+/**
+ * Item in Página → group
+ *
+ */
+export interface PageDocumentDataGroupItem {
+  /**
+   * text field in *Página → group*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.group[].text
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  text: prismic.KeyTextField;
+}
+/**
+ * Slice for *Página → Slice Zone*
+ *
+ */
+type PageDocumentDataSlicesSlice = never;
+/**
+ * Página document from Prismic
+ *
+ * - **API ID**: `page`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
+export type AllDocumentTypes = HomeDocument | NavegacaoDocument | PageDocument;
 /**
  * Default variation for Hero Slice
  *
@@ -33,14 +254,116 @@ type HeroSliceVariation = HeroSliceDefault;
  *
  */
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
+/**
+ * Primary content in MenuOpcoes → Primary
+ *
+ */
+interface MenuOpcoesSliceDefaultPrimary {
+  /**
+   * Nome field in *MenuOpcoes → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Nome do Link
+   * - **API ID Path**: menu_opcoes.primary.name
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  name: prismic.KeyTextField;
+  /**
+   * Link field in *MenuOpcoes → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Link para a página
+   * - **API ID Path**: menu_opcoes.primary.link
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  link: prismic.LinkField;
+}
+/**
+ * Item in MenuOpcoes → Items
+ *
+ */
+export interface MenuOpcoesSliceDefaultItem {
+  /**
+   * Sub Menu Nome field in *MenuOpcoes → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Nome do link
+   * - **API ID Path**: menu_opcoes.items[].subMenuName
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  subMenuName: prismic.KeyTextField;
+  /**
+   * Sub Menu Link field in *MenuOpcoes → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Link para a página
+   * - **API ID Path**: menu_opcoes.items[].subMenuLink
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  subMenuLink: prismic.LinkField;
+}
+/**
+ * Default variation for MenuOpcoes Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type MenuOpcoesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<MenuOpcoesSliceDefaultPrimary>,
+  Simplify<MenuOpcoesSliceDefaultItem>
+>;
+/**
+ * Slice variation for *MenuOpcoes*
+ *
+ */
+type MenuOpcoesSliceVariation = MenuOpcoesSliceDefault;
+/**
+ * MenuOpcoes Shared Slice
+ *
+ * - **API ID**: `menu_opcoes`
+ * - **Description**: `MenuOpcoes`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type MenuOpcoesSlice = prismic.SharedSlice<
+  "menu_opcoes",
+  MenuOpcoesSliceVariation
+>;
 declare module "@prismicio/client" {
   interface CreateClient {
     (
       repositoryNameOrEndpoint: string,
       options?: prismicClient.ClientConfig
-    ): prismicClient.Client;
+    ): prismicClient.Client<AllDocumentTypes>;
   }
   namespace Content {
-    export type { HeroSliceDefault, HeroSliceVariation, HeroSlice };
+    export type {
+      HomeDocumentData,
+      HomeDocumentDataSlicesSlice,
+      HomeDocument,
+      NavegacaoDocumentData,
+      NavegacaoDocumentDataSlicesSlice,
+      NavegacaoDocument,
+      PageDocumentData,
+      PageDocumentDataGroupItem,
+      PageDocumentDataSlicesSlice,
+      PageDocument,
+      AllDocumentTypes,
+      HeroSliceDefault,
+      HeroSliceVariation,
+      HeroSlice,
+      MenuOpcoesSliceDefaultPrimary,
+      MenuOpcoesSliceDefaultItem,
+      MenuOpcoesSliceDefault,
+      MenuOpcoesSliceVariation,
+      MenuOpcoesSlice,
+    };
   }
 }

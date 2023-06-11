@@ -1,5 +1,6 @@
 import { Heading } from '@core-ui/Heading'
 import { Text } from '@core-ui/Text'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -10,12 +11,12 @@ export default function Home() {
         </Heading>
         <Text>
           Get all components{' '}
-          <a
+          <Link
             href="/components"
             className="underline underline-offset-2 transition-all delay-300 hover:text-brand-primary"
           >
             here
-          </a>
+          </Link>
         </Text>
       </div>
     </main>
