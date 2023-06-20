@@ -98,7 +98,7 @@ interface NavegacaoDocumentData {
  * Slice for *Navegação → Slice Zone*
  *
  */
-type NavegacaoDocumentDataSlicesSlice = MenuOpcoesSlice;
+type NavegacaoDocumentDataSlicesSlice = MenuOpcoesSlice | NavContactsSlice;
 /**
  * Navegação document from Prismic
  *
@@ -255,12 +255,12 @@ type HeroSliceVariation = HeroSliceDefault;
  */
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 /**
- * Primary content in MenuOpcoes → Primary
+ * Primary content in MenuOptions → Primary
  *
  */
 interface MenuOpcoesSliceDefaultPrimary {
   /**
-   * Nome field in *MenuOpcoes → Primary*
+   * Nome field in *MenuOptions → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: Nome do Link
@@ -270,7 +270,7 @@ interface MenuOpcoesSliceDefaultPrimary {
    */
   name: prismic.KeyTextField;
   /**
-   * Link field in *MenuOpcoes → Primary*
+   * Link field in *MenuOptions → Primary*
    *
    * - **Field Type**: Link
    * - **Placeholder**: Link para a página
@@ -281,12 +281,12 @@ interface MenuOpcoesSliceDefaultPrimary {
   link: prismic.LinkField;
 }
 /**
- * Item in MenuOpcoes → Items
+ * Item in MenuOptions → Items
  *
  */
 export interface MenuOpcoesSliceDefaultItem {
   /**
-   * Sub Menu Nome field in *MenuOpcoes → Items*
+   * Sub Menu Nome field in *MenuOptions → Items*
    *
    * - **Field Type**: Text
    * - **Placeholder**: Nome do link
@@ -296,7 +296,7 @@ export interface MenuOpcoesSliceDefaultItem {
    */
   subMenuName: prismic.KeyTextField;
   /**
-   * Sub Menu Link field in *MenuOpcoes → Items*
+   * Sub Menu Link field in *MenuOptions → Items*
    *
    * - **Field Type**: Link
    * - **Placeholder**: Link para a página
@@ -307,7 +307,7 @@ export interface MenuOpcoesSliceDefaultItem {
   subMenuLink: prismic.LinkField;
 }
 /**
- * Default variation for MenuOpcoes Slice
+ * Default variation for MenuOptions Slice
  *
  * - **API ID**: `default`
  * - **Description**: `Default`
@@ -320,12 +320,12 @@ export type MenuOpcoesSliceDefault = prismic.SharedSliceVariation<
   Simplify<MenuOpcoesSliceDefaultItem>
 >;
 /**
- * Slice variation for *MenuOpcoes*
+ * Slice variation for *MenuOptions*
  *
  */
 type MenuOpcoesSliceVariation = MenuOpcoesSliceDefault;
 /**
- * MenuOpcoes Shared Slice
+ * MenuOptions Shared Slice
  *
  * - **API ID**: `menu_opcoes`
  * - **Description**: `MenuOpcoes`
@@ -335,6 +335,200 @@ type MenuOpcoesSliceVariation = MenuOpcoesSliceDefault;
 export type MenuOpcoesSlice = prismic.SharedSlice<
   "menu_opcoes",
   MenuOpcoesSliceVariation
+>;
+/**
+ * Item in NavContacts → Items
+ *
+ */
+export interface NavContactsSliceDefaultItem {
+  /**
+   * Social Media field in *NavContacts → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Enter you business Social Media
+   * - **API ID Path**: nav_contacts.items[].social_media
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  social_media: prismic.SelectField<"Facebook" | "Instagram" | "LinkedIn">;
+  /**
+   * Link field in *NavContacts → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Link to your business Social media Profile
+   * - **API ID Path**: nav_contacts.items[].link
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  link: prismic.LinkField;
+}
+/**
+ * Social Medias variation for NavContacts Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type NavContactsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<NavContactsSliceDefaultItem>
+>;
+/**
+ * Primary content in NavContacts → Primary
+ *
+ */
+interface NavContactsSliceEmailPrimary {
+  /**
+   * Email field in *NavContacts → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Enter your business best contact email
+   * - **API ID Path**: nav_contacts.primary.email
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  email: prismic.KeyTextField;
+}
+/**
+ * Email variation for NavContacts Slice
+ *
+ * - **API ID**: `email`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type NavContactsSliceEmail = prismic.SharedSliceVariation<
+  "email",
+  Simplify<NavContactsSliceEmailPrimary>,
+  never
+>;
+/**
+ * Primary content in NavContacts → Primary
+ *
+ */
+interface NavContactsSlicePhoneNumberPrimary {
+  /**
+   * Number field in *NavContacts → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Enter your company phone number
+   * - **API ID Path**: nav_contacts.primary.number
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  number: prismic.KeyTextField;
+  /**
+   * Is WhatsApp field in *NavContacts → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: nav_contacts.primary.is_whatsapp
+   * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+   *
+   */
+  is_whatsapp: prismic.BooleanField;
+  /**
+   * WhatsApp Link field in *NavContacts → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: If is whatsApp phone number, then enter custom link to wahtsApp
+   * - **API ID Path**: nav_contacts.primary.whatsapp_link
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  whatsapp_link: prismic.LinkField;
+}
+/**
+ * Phone Number variation for NavContacts Slice
+ *
+ * - **API ID**: `phoneNumber`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type NavContactsSlicePhoneNumber = prismic.SharedSliceVariation<
+  "phoneNumber",
+  Simplify<NavContactsSlicePhoneNumberPrimary>,
+  never
+>;
+/**
+ * Slice variation for *NavContacts*
+ *
+ */
+type NavContactsSliceVariation =
+  | NavContactsSliceDefault
+  | NavContactsSliceEmail
+  | NavContactsSlicePhoneNumber;
+/**
+ * NavContacts Shared Slice
+ *
+ * - **API ID**: `nav_contacts`
+ * - **Description**: `NavContacts`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type NavContactsSlice = prismic.SharedSlice<
+  "nav_contacts",
+  NavContactsSliceVariation
+>;
+/**
+ * Item in SocialMedias → Items
+ *
+ */
+export interface SocialMediasSliceDefaultItem {
+  /**
+   * Social Media field in *SocialMedias → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Enter you business Social Media
+   * - **API ID Path**: social_medias.items[].social_media
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  social_media: prismic.SelectField<"Facebook" | "Instagram" | "LinkedIn">;
+  /**
+   * Link field in *SocialMedias → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Link to your business Social media Profile
+   * - **API ID Path**: social_medias.items[].link
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  link: prismic.LinkField;
+}
+/**
+ * Default variation for SocialMedias Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type SocialMediasSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<SocialMediasSliceDefaultItem>
+>;
+/**
+ * Slice variation for *SocialMedias*
+ *
+ */
+type SocialMediasSliceVariation = SocialMediasSliceDefault;
+/**
+ * SocialMedias Shared Slice
+ *
+ * - **API ID**: `social_medias`
+ * - **Description**: `SocialMedias`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type SocialMediasSlice = prismic.SharedSlice<
+  "social_medias",
+  SocialMediasSliceVariation
 >;
 declare module "@prismicio/client" {
   interface CreateClient {
@@ -364,6 +558,18 @@ declare module "@prismicio/client" {
       MenuOpcoesSliceDefault,
       MenuOpcoesSliceVariation,
       MenuOpcoesSlice,
+      NavContactsSliceDefaultItem,
+      NavContactsSliceDefault,
+      NavContactsSliceEmailPrimary,
+      NavContactsSliceEmail,
+      NavContactsSlicePhoneNumberPrimary,
+      NavContactsSlicePhoneNumber,
+      NavContactsSliceVariation,
+      NavContactsSlice,
+      SocialMediasSliceDefaultItem,
+      SocialMediasSliceDefault,
+      SocialMediasSliceVariation,
+      SocialMediasSlice,
     };
   }
 }

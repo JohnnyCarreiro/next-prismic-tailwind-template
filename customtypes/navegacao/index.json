@@ -20,7 +20,12 @@
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
-        "config": { "choices": { "menu_opcoes": { "type": "SharedSlice" } } }
+        "config": {
+          "choices": {
+            "menu_opcoes": { "type": "SharedSlice" },
+            "nav_contacts": { "type": "SharedSlice" }
+          }
+        }
       }
     }
   }

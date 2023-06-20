@@ -1,7 +1,7 @@
 {
   "id": "menu_opcoes",
   "type": "SharedSlice",
-  "name": "MenuOpcoes",
+  "name": "MenuOptions",
   "description": "MenuOpcoes",
   "variations": [
     {

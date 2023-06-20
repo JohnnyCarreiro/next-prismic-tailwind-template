@@ -11,7 +11,7 @@ export const BottomSection: FC = () => {
     <div className={'w-full bg-brand-secondary'}>
       <Wrapper
         className={
-          'min-h-16 relative flex h-16 items-center justify-between px-4 md:flex md:h-20 xl:px-0'
+          'min-h-16 relative flex h-16 items-center justify-between px-4 text-primary-100 md:flex md:h-20 xl:px-0'
         }
       >
         {/* Logo */}
