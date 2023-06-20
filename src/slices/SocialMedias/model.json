@@ -1,0 +1,36 @@
+{
+  "id": "social_medias",
+  "type": "SharedSlice",
+  "name": "SocialMedias",
+  "description": "SocialMedias",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {
+        "social_media": {
+          "type": "Select",
+          "config": {
+            "label": "Social Media",
+            "placeholder": "Enter you business Social Media",
+            "options": ["Facebook", "Instagram", "LinkedIn"]
+          }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link",
+            "placeholder": "Link to your business Social media Profile",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        }
+      }
+    }
+  ]
+}

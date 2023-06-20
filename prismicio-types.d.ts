@@ -6,6 +6,227 @@ import type * as prismicClient from "@prismicio/client";
 type Simplify<T> = {
   [KeyType in keyof T]: T[KeyType];
 };
+/** Content for Início documents */
+interface HomeDocumentData {
+  /**
+   * Slice Zone field in *Início*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+   *
+   */
+  slices: prismic.SliceZone<HomeDocumentDataSlicesSlice>;
+  /**
+   * Meta Description field in *Início*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: home.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  meta_description: prismic.RichTextField;
+  /**
+   * Meta Image field in *Início*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  meta_image: prismic.ImageField<never>;
+  /**
+   * Meta Title field in *Início*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: home.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  meta_title: prismic.KeyTextField;
+}
+/**
+ * Slice for *Início → Slice Zone*
+ *
+ */
+type HomeDocumentDataSlicesSlice = HeroSlice;
+/**
+ * Início document from Prismic
+ *
+ * - **API ID**: `home`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HomeDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
+/** Content for Navegação documents */
+interface NavegacaoDocumentData {
+  /**
+   * Nome field in *Navegação*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Nome da lista de menus
+   * - **API ID Path**: navegacao.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  name: prismic.KeyTextField;
+  /**
+   * Slice Zone field in *Navegação*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navegacao.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+   *
+   */
+  slices: prismic.SliceZone<NavegacaoDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *Navegação → Slice Zone*
+ *
+ */
+type NavegacaoDocumentDataSlicesSlice = MenuOpcoesSlice | NavContactsSlice;
+/**
+ * Navegação document from Prismic
+ *
+ * - **API ID**: `navegacao`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavegacaoDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<NavegacaoDocumentData>,
+    "navegacao",
+    Lang
+  >;
+/** Content for Página documents */
+interface PageDocumentData {
+  /**
+   * Título da página field in *Página*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.pageTitle
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  pageTitle: prismic.KeyTextField;
+  /**
+   * belongs to field in *Página*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.belongsTo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  belongsTo: prismic.RelationField<"page" | "home">;
+  /**
+   * group field in *Página*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.group[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/group
+   *
+   */
+  group: prismic.GroupField<Simplify<PageDocumentDataGroupItem>>;
+  /**
+   * Slice Zone field in *Página*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+   *
+   */
+  slices: prismic.SliceZone<PageDocumentDataSlicesSlice>;
+  /**
+   * Meta Description field in *Página*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  meta_description: prismic.RichTextField;
+  /**
+   * Meta Image field in *Página*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  meta_image: prismic.ImageField<never>;
+  /**
+   * Meta Title field in *Página*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  meta_title: prismic.KeyTextField;
+}
+/**
+ * Item in Página → group
+ *
+ */
+export interface PageDocumentDataGroupItem {
+  /**
+   * text field in *Página → group*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.group[].text
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  text: prismic.KeyTextField;
+}
+/**
+ * Slice for *Página → Slice Zone*
+ *
+ */
+type PageDocumentDataSlicesSlice = never;
+/**
+ * Página document from Prismic
+ *
+ * - **API ID**: `page`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
+export type AllDocumentTypes = HomeDocument | NavegacaoDocument | PageDocument;
 /**
  * Default variation for Hero Slice
  *
@@ -33,14 +254,322 @@ type HeroSliceVariation = HeroSliceDefault;
  *
  */
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
+/**
+ * Primary content in MenuOptions → Primary
+ *
+ */
+interface MenuOpcoesSliceDefaultPrimary {
+  /**
+   * Nome field in *MenuOptions → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Nome do Link
+   * - **API ID Path**: menu_opcoes.primary.name
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  name: prismic.KeyTextField;
+  /**
+   * Link field in *MenuOptions → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Link para a página
+   * - **API ID Path**: menu_opcoes.primary.link
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  link: prismic.LinkField;
+}
+/**
+ * Item in MenuOptions → Items
+ *
+ */
+export interface MenuOpcoesSliceDefaultItem {
+  /**
+   * Sub Menu Nome field in *MenuOptions → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Nome do link
+   * - **API ID Path**: menu_opcoes.items[].subMenuName
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  subMenuName: prismic.KeyTextField;
+  /**
+   * Sub Menu Link field in *MenuOptions → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Link para a página
+   * - **API ID Path**: menu_opcoes.items[].subMenuLink
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  subMenuLink: prismic.LinkField;
+}
+/**
+ * Default variation for MenuOptions Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type MenuOpcoesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<MenuOpcoesSliceDefaultPrimary>,
+  Simplify<MenuOpcoesSliceDefaultItem>
+>;
+/**
+ * Slice variation for *MenuOptions*
+ *
+ */
+type MenuOpcoesSliceVariation = MenuOpcoesSliceDefault;
+/**
+ * MenuOptions Shared Slice
+ *
+ * - **API ID**: `menu_opcoes`
+ * - **Description**: `MenuOpcoes`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type MenuOpcoesSlice = prismic.SharedSlice<
+  "menu_opcoes",
+  MenuOpcoesSliceVariation
+>;
+/**
+ * Item in NavContacts → Items
+ *
+ */
+export interface NavContactsSliceDefaultItem {
+  /**
+   * Social Media field in *NavContacts → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Enter you business Social Media
+   * - **API ID Path**: nav_contacts.items[].social_media
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  social_media: prismic.SelectField<"Facebook" | "Instagram" | "LinkedIn">;
+  /**
+   * Link field in *NavContacts → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Link to your business Social media Profile
+   * - **API ID Path**: nav_contacts.items[].link
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  link: prismic.LinkField;
+}
+/**
+ * Social Medias variation for NavContacts Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type NavContactsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<NavContactsSliceDefaultItem>
+>;
+/**
+ * Primary content in NavContacts → Primary
+ *
+ */
+interface NavContactsSliceEmailPrimary {
+  /**
+   * Email field in *NavContacts → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Enter your business best contact email
+   * - **API ID Path**: nav_contacts.primary.email
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  email: prismic.KeyTextField;
+}
+/**
+ * Email variation for NavContacts Slice
+ *
+ * - **API ID**: `email`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type NavContactsSliceEmail = prismic.SharedSliceVariation<
+  "email",
+  Simplify<NavContactsSliceEmailPrimary>,
+  never
+>;
+/**
+ * Primary content in NavContacts → Primary
+ *
+ */
+interface NavContactsSlicePhoneNumberPrimary {
+  /**
+   * Number field in *NavContacts → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Enter your company phone number
+   * - **API ID Path**: nav_contacts.primary.number
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  number: prismic.KeyTextField;
+  /**
+   * Is WhatsApp field in *NavContacts → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: nav_contacts.primary.is_whatsapp
+   * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+   *
+   */
+  is_whatsapp: prismic.BooleanField;
+  /**
+   * WhatsApp Link field in *NavContacts → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: If is whatsApp phone number, then enter custom link to wahtsApp
+   * - **API ID Path**: nav_contacts.primary.whatsapp_link
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  whatsapp_link: prismic.LinkField;
+}
+/**
+ * Phone Number variation for NavContacts Slice
+ *
+ * - **API ID**: `phoneNumber`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type NavContactsSlicePhoneNumber = prismic.SharedSliceVariation<
+  "phoneNumber",
+  Simplify<NavContactsSlicePhoneNumberPrimary>,
+  never
+>;
+/**
+ * Slice variation for *NavContacts*
+ *
+ */
+type NavContactsSliceVariation =
+  | NavContactsSliceDefault
+  | NavContactsSliceEmail
+  | NavContactsSlicePhoneNumber;
+/**
+ * NavContacts Shared Slice
+ *
+ * - **API ID**: `nav_contacts`
+ * - **Description**: `NavContacts`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type NavContactsSlice = prismic.SharedSlice<
+  "nav_contacts",
+  NavContactsSliceVariation
+>;
+/**
+ * Item in SocialMedias → Items
+ *
+ */
+export interface SocialMediasSliceDefaultItem {
+  /**
+   * Social Media field in *SocialMedias → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Enter you business Social Media
+   * - **API ID Path**: social_medias.items[].social_media
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  social_media: prismic.SelectField<"Facebook" | "Instagram" | "LinkedIn">;
+  /**
+   * Link field in *SocialMedias → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Link to your business Social media Profile
+   * - **API ID Path**: social_medias.items[].link
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  link: prismic.LinkField;
+}
+/**
+ * Default variation for SocialMedias Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type SocialMediasSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<SocialMediasSliceDefaultItem>
+>;
+/**
+ * Slice variation for *SocialMedias*
+ *
+ */
+type SocialMediasSliceVariation = SocialMediasSliceDefault;
+/**
+ * SocialMedias Shared Slice
+ *
+ * - **API ID**: `social_medias`
+ * - **Description**: `SocialMedias`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type SocialMediasSlice = prismic.SharedSlice<
+  "social_medias",
+  SocialMediasSliceVariation
+>;
 declare module "@prismicio/client" {
   interface CreateClient {
     (
       repositoryNameOrEndpoint: string,
       options?: prismicClient.ClientConfig
-    ): prismicClient.Client;
+    ): prismicClient.Client<AllDocumentTypes>;
   }
   namespace Content {
-    export type { HeroSliceDefault, HeroSliceVariation, HeroSlice };
+    export type {
+      HomeDocumentData,
+      HomeDocumentDataSlicesSlice,
+      HomeDocument,
+      NavegacaoDocumentData,
+      NavegacaoDocumentDataSlicesSlice,
+      NavegacaoDocument,
+      PageDocumentData,
+      PageDocumentDataGroupItem,
+      PageDocumentDataSlicesSlice,
+      PageDocument,
+      AllDocumentTypes,
+      HeroSliceDefault,
+      HeroSliceVariation,
+      HeroSlice,
+      MenuOpcoesSliceDefaultPrimary,
+      MenuOpcoesSliceDefaultItem,
+      MenuOpcoesSliceDefault,
+      MenuOpcoesSliceVariation,
+      MenuOpcoesSlice,
+      NavContactsSliceDefaultItem,
+      NavContactsSliceDefault,
+      NavContactsSliceEmailPrimary,
+      NavContactsSliceEmail,
+      NavContactsSlicePhoneNumberPrimary,
+      NavContactsSlicePhoneNumber,
+      NavContactsSliceVariation,
+      NavContactsSlice,
+      SocialMediasSliceDefaultItem,
+      SocialMediasSliceDefault,
+      SocialMediasSliceVariation,
+      SocialMediasSlice,
+    };
   }
 }

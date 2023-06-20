@@ -4,11 +4,11 @@ import { VariantProps, cva } from 'class-variance-authority'
 const textVariantProps = cva('text-inherit leading-relaxed font-brand', {
   variants: {
     size: {
-      xsm: 'text-2xl max-md:text-xl',
-      sm: 'text-4xl max-sm:text-2xl max-md:text-3xl ',
-      md: 'text-5xl max-sm:text-3xl max-md:text-4xl ',
-      lg: 'text-6xl max-sm:text-4xl max-md:text-5xl ',
-      xlg: 'text-7xl max-sm:text-5xl max-md:text-6xl ',
+      xsm: 'text-2xl max-md:text-xl' /** 1.25rem 20px - 1.5rem 24px */,
+      sm: 'text-4xl max-sm:text-2xl max-md:text-3xl ' /** 1.5rem 24px - 1.875rem 30px - 2.25rem 36px */,
+      md: 'text-5xl max-sm:text-3xl max-md:text-4xl ' /** 1.875rem 30px - 2.25rem 36px - 3rem 48px */,
+      lg: 'text-6xl max-sm:text-4xl max-md:text-5xl ' /** 2.25rem 36px - 3rem 48px - 3.75rem 60px */,
+      xlg: 'text-7xl max-sm:text-5xl max-md:text-6xl ' /** 3rem 48px - 3.75rem 60px - 4.5rem 72px */,
     },
   },
   defaultVariants: {
