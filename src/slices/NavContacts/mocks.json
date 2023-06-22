@@ -1,0 +1,67 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"social_media",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "LinkedIn",
+							"type": "Select"
+						}
+					]
+				]
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "email",
+		"primary": {
+			"email": {
+				"__TYPE__": "FieldContent",
+				"value": "stairs",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "phoneNumber",
+		"primary": {
+			"number": {
+				"__TYPE__": "FieldContent",
+				"value": "brought",
+				"type": "Text"
+			},
+			"is_whatsapp": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"whatsapp_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com"
+				}
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	}
+]

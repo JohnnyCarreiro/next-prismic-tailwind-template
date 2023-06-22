@@ -2,10 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @media (prefers-color-scheme: light) {
 }
 
 body {
-  @apply bg-gray-200
+  @apply bg-gray-200 font-sans;
 }

@@ -1,0 +1,46 @@
+{
+  "id": "menu_opcoes",
+  "type": "SharedSlice",
+  "name": "MenuOptions",
+  "description": "MenuOpcoes",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "name": {
+          "type": "Text",
+          "config": { "label": "Nome", "placeholder": "Nome do Link" }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link",
+            "placeholder": "Link para a página",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        }
+      },
+      "items": {
+        "subMenuName": {
+          "type": "Text",
+          "config": { "label": "Sub Menu Nome", "placeholder": "Nome do link" }
+        },
+        "subMenuLink": {
+          "type": "Link",
+          "config": {
+            "label": "Sub Menu Link",
+            "placeholder": "Link para a página",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        }
+      }
+    }
+  ]
+}
