@@ -1,5 +1,5 @@
 'use client'
-// get nav items store here and add current path using usePathname from next navigation, than create scroll behaviour navigation to this navbar section
+
 import { FC, useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -17,14 +17,14 @@ export const BottomSection: FC = () => {
     actions: { setCurrentPath },
   } = useNavItemsStore.getState()
   setCurrentPath(usePathname()!)
-  const [scrollData, scrollDataSet] = useState({
+  const [scrollData, setScrollData] = useState({
     y: 0,
     lastY: 0,
   })
   const [hideNavbar, hideNavbarSet] = useState<boolean>(false)
 
   const handleScroll = () => {
-    scrollDataSet((prevState) => ({
+    setScrollData((prevState) => ({
       y: window.scrollY,
       lastY: prevState.y,
     }))
